@@ -236,18 +236,18 @@
     }
 
     document.getElementById('submitComment').addEventListener('click', async () => {
-      let name = document.getElementById('cname').value.trim() || 'Гость';
-      let rating = document.getElementById('crating').value;
-      let msg = document.getElementById('cmessage').value.trim();
-      if (msg.length < 3) { alert('Пожалуйста, оставьте отзыв не короче 3 символов.'); return; }
+  let name = document.getElementById('cname').value.trim() || 'Гость';
+  let rating = document.getElementById('crating').value;
+  let msg = document.getElementById('cmessage').value.trim();
+  if (msg.length < 3) { alert('Пожалуйста, оставьте отзыв не короче 3 символов.'); return; }
 
-      name = censorText(name);
-      msg = censorText(msg);
+  name = censorText(name);
+  msg = censorText(msg);
 
-      await addDoc(commentsCol, { name, rating, msg, t: serverTimestamp() });
-      document.getElementById('cmessage').value = '';
-      renderComments();
-    });
+  await addDoc(commentsCol, { name, rating, msg, t: serverTimestamp() });
+  document.getElementById('cmessage').value = '';
+  renderComments();
+});
 
     document.getElementById('clearComments').addEventListener('click', async () => {
       if (confirm('Удалить все отзывы?')) {
