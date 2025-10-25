@@ -1,4 +1,4 @@
- <!doctype html>  
+<!doctype html>  
 <html lang="ru">
 <head>
   <meta charset="utf-8">
@@ -178,22 +178,26 @@
   <script async src="//www.instagram.com/embed.js"></script>
 
   <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
-  <script>
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.24.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.24.0/firebase-firestore.js";
+
     const firebaseConfig = {
-      apiKey: "AIzaSyD3z5vSXgRjonfynxfpV6IKOd-2YyfTqew",
-      authDomain: "otzivi-aisezim.firebaseapp.com",
-      projectId: "otzivi-aisezim",
-      storageBucket: "otzivi-aisezim.appspot.com",
-      messagingSenderId: "526223205407",
-      appId: "1:526223205407:web:497b4ab13eb4b6b6f7a12a"
+      apiKey: "AIzaSyCxbPEYPp2bpdn_UNqVe1PkfIB1rYnzHeE",
+      authDomain: "aisezimotziv-dee68.firebaseapp.com",
+      projectId: "aisezimotziv-dee68",
+      storageBucket: "aisezimotziv-dee68.firebasestorage.app",
+      messagingSenderId: "348332654941",
+      appId: "1:348332654941:web:af71f58d24036d440aa8b4",
+      measurementId: "G-K1WQZH9QQP"
     };
-    firebase.initializeApp(firebaseConfig);
-    const db = firebase.firestore();
-    const commentsCol = db.collection("comments");
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+    const commentsCol = collection(db, "comments");
 
     const forbiddenWords = ["лесби","лесбиянка","инцест","порнуха","сперма","дроч","залупня","дерьмо","выбляд","выбляди","выблядок","еботня","отьебалась","ебатория","ебаная","понос","дрисня","пизди","ебал","выебал","ебатся","ебать","отъеб","отьеб","отьебался","отьебись","охуенно","хуйня","дура","говно","член","пенис","залупа","сука","блять","хуй","нахуя","нахуй","лох","ебаный","ебать","ебал","соси","выебать","выебал","секс","порно","дрочить","даун","долбоеб","гондон","бля","шлюха","член","пидор","пидр","пизда"];
+
     function censorText(text) {
       let censored = text;
       forbiddenWords.forEach(word => {
@@ -208,16 +212,21 @@
     const yearEl = document.getElementById('year');
     yearEl.textContent = new Date().getFullYear();
 
-    function renderComments(comments) {
+    async function renderComments() {
+      const q = query(commentsCol, orderBy("t", "desc"));
+      const snapshot = await getDocs(q);
       listEl.innerHTML = '';
-      if (!comments.length) {
+
+      if (snapshot.empty) {
         listEl.innerHTML = '<div style="color:var(--muted)">Пока нет отзывов — станьте первым!</div>';
         return;
       }
-      comments.reverse().forEach(c => {
+
+      snapshot.docs.forEach(docSnap => {
+        const c = docSnap.data();
         const div = document.createElement('div');
         div.className = 'comment';
-        div.innerHTML = `<div class="meta"><strong>${escapeHtml(c.name)}</strong> • ${c.rating} ★ • <span>${new Date(c.t.toDate()).toLocaleString('ru-RU')}</span></div><div>${escapeHtml(c.msg)}</div>`;
+        div.innerHTML = `<div class="meta"><strong>${escapeHtml(c.name)}</strong> • ${c.rating} ★ • <span>${new Date(c.t.seconds*1000).toLocaleString('ru-RU')}</span></div><div>${escapeHtml(c.msg)}</div>`;
         listEl.appendChild(div);
       });
     }
@@ -226,14 +235,7 @@
       return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]));
     }
 
-    function loadComments() {
-      commentsCol.orderBy('t', 'desc').get().then(snapshot => {
-        const comments = snapshot.docs.map(doc => doc.data());
-        renderComments(comments);
-      });
-    }
-
-    document.getElementById('submitComment').addEventListener('click', () => {
+    document.getElementById('submitComment').addEventListener('click', async () => {
       let name = document.getElementById('cname').value.trim() || 'Гость';
       let rating = document.getElementById('crating').value;
       let msg = document.getElementById('cmessage').value.trim();
@@ -242,24 +244,20 @@
       name = censorText(name);
       msg = censorText(msg);
 
-      commentsCol.add({ name, rating, msg, t: firebase.firestore.FieldValue.serverTimestamp() })
-        .then(() => {
-          document.getElementById('cmessage').value = '';
-          loadComments();
-        });
+      await addDoc(commentsCol, { name, rating, msg, t: serverTimestamp() });
+      document.getElementById('cmessage').value = '';
+      renderComments();
     });
 
     document.getElementById('clearComments').addEventListener('click', async () => {
       if (confirm('Удалить все отзывы?')) {
-        const snapshot = await commentsCol.get();
-        const batch = db.batch();
-        snapshot.docs.forEach(doc => batch.delete(doc.ref));
-        await batch.commit();
-        loadComments();
+        const snapshot = await getDocs(commentsCol);
+        snapshot.docs.forEach(d => deleteDoc(doc(db, "comments", d.id)));
+        renderComments();
       }
     });
 
-    loadComments();
+    renderComments();
   </script>
 </body>
 </html>
