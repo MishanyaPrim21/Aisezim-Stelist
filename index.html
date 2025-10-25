@@ -1,0 +1,235 @@
+  <!doctype html> 
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Aisezim Stelist — Парикмахерская</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0b0b0d;
+      --neon-pink:#ff2df7;
+      --muted:#9a9a9a;
+      --card:#0f0f11;
+      --accent:#ff80e6;
+      --whatsapp:#25D366;
+      --glass: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    body{font-family:Montserrat,system-ui,-apple-system,Segoe UI,Roboto,'Helvetica Neue',Arial; margin:0; background:linear-gradient(180deg,#050507 0%, #0b0b0d 100%); color:#fff; -webkit-font-smoothing:antialiased}
+    .container{max-width:1100px;margin:40px auto;padding:24px}
+
+    header{display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--neon-pink),#ff66d9);box-shadow:0 0 18px rgba(255,45,247,0.15),0 0 40px var(--neon-pink);display:flex;align-items:center;justify-content:center;font-weight:800;color:#100;letter-spacing:1px}
+    .brand h1{margin:0;font-size:20px;line-height:1}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:28px;margin-top:22px}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01)); padding:28px;border-radius:14px;box-shadow:0 6px 30px rgba(0,0,0,0.6);border:1px solid rgba(255,45,247,0.06)}
+    .hero h2{font-size:34px;margin:0 0 8px;color:var(--neon-pink);text-shadow:0 0 16px rgba(255,45,247,0.25)}
+    .hero p.lead{color:var(--muted);margin-top:0}
+    .buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:18px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:10px;text-decoration:none;font-weight:600;border:1px solid rgba(255,255,255,0.06)}
+    .btn.wa{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 6px 20px rgba(0,0,0,0.6);border-color:rgba(37,211,102,0.12)}
+    .btn.insta{padding:12px;background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);color:#fff}
+
+    .contact{position:relative}
+    .contact .card{padding:18px;border-radius:12px;background:linear-gradient(180deg,#0f0f11, #0b0b0d);border:1px solid rgba(255,255,255,0.03)}
+    .phone{display:flex;align-items:center;gap:12px}
+    .phone .num{font-weight:700;color:var(--accent)}
+
+    .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:12px;margin-top:22px}
+    .insta-embed{background:var(--glass);border-radius:12px;padding:6px;box-shadow:0 8px 40px rgba(0,0,0,0.6);transition:transform .3s}
+    .insta-embed:hover{transform:scale(1.03)}
+
+    .social-row{display:flex;gap:12px;margin-top:14px}
+    .soc-btn{display:inline-flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;text-decoration:none;font-weight:700}
+
+    .price-list{margin-top:40px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:24px;border-radius:14px;border:1px solid rgba(255,45,247,0.06)}
+    .price-list h3{color:var(--neon-pink);margin-top:0}
+    .price-item{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05)}
+
+    .comments{margin-top:26px}
+    .comment-form{display:flex;flex-direction:column;gap:10px;padding:14px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,45,247,0.04)}
+    input,textarea,select{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px;border-radius:8px;color:#fff}
+    .comment-list{margin-top:12px;display:flex;flex-direction:column;gap:12px}
+    .comment{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
+    .meta{font-size:12px;color:var(--muted);margin-bottom:6px}
+
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px; 
+  border: 2px solid var(--neon-pink); 
+  box-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255,45,247,0.4); 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,45,247,0.6);
+}
+
+footer{margin-top:34px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:900px){.hero{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">AS</div>
+        <div>
+          <h1>Aisezim Stelist</h1>
+          <p>Парикмахерская — неон, стиль, индивидуальность</p>
+        </div>
+      </div>
+      <div style="text-align:right">
+        <div style="font-weight:700;color:var(--neon-pink)">+996 706 341 372</div>
+        <div style="font-size:12px;color:var(--muted)">Быстрая запись — WhatsApp</div>
+      </div>
+    </header>
+
+    <main class="hero">
+      <section class="hero-card">
+        <h2>Неоновые образы и безупречный стайлинг</h2>
+        <p class="lead">Aisezim Stelist — мастерская причёсок и стайлинга. Делаем яркие, смелые и аккуратные образы для любого события.</p>
+
+        <div class="buttons">
+          <a class="btn wa" href="https://wa.me/996706341372" target="_blank">WhatsApp</a>
+          <a class="btn insta" href="https://www.instagram.com/aisezim_stylist?igsh=ZGZlengyYWJuMWxj" target="_blank">Instagram</a>
+          <a class="btn" href="tel:+996706341372">Позвонить</a>
+        </div>
+
+        <div class="gallery">
+          <img src="v111.jpg" alt="Прическа 1 — Aisezim"/>
+          <img src="v222.jpg" alt="Прическа 2 — Aisezim"/>
+        </div>
+
+        <section class="price-list" id="price">
+          <h3>Прайс-лист</h3>
+          <div class="price-item"><span>Сложное окрашивание</span><span>8000–9000 сом</span></div>
+          <div class="price-item"><strong>Тонирование</strong></div>
+          <div class="price-item"><span>Короткие волосы</span><span>1200 сом</span></div>
+          <div class="price-item"><span>Средние волосы</span><span>2000 сом</span></div>
+          <div class="price-item"><span>Длинные волосы</span><span>2500 сом</span></div>
+          <div class="price-item"><strong>Покраска в один тон</strong></div>
+          <div class="price-item"><span>Короткие волосы</span><span>1000 сом</span></div>
+          <div class="price-item"><span>Средние волосы</span><span>1500 сом</span></div>
+          <div class="price-item"><span>Длинные волосы</span><span>2000–2500 сом</span></div>
+          <div class="price-item"><span>Контуринг</span><span>4500–5000 сом</span></div>
+          <div class="price-item"><span>Осветление маслом</span><span>5000 сом</span></div>
+          <div class="price-item"><span>Стрижки (чёлка)</span><span>700–250 сом</span></div>
+        </section>
+
+      </section>
+
+      <aside class="contact">
+        <div class="card">
+          <h3 style="margin:0 0 6px;color:var(--neon-pink)">Контакты</h3>
+          <div class="phone">
+            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--neon-pink),#ff66d9);display:flex;align-items:center;justify-content:center;font-weight:800;color:#120">AS</div>
+            <div>
+              <div class="num">+996 706 341 372</div>
+              <div style="font-size:13px;color:var(--muted)">Запись в WhatsApp</div>
+            </div>
+          </div>
+          <div class="social-row">
+            <a class="soc-btn" href="https://wa.me/996706341372" target="_blank" style="background:linear-gradient(180deg,rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(37,211,102,0.12);color:var(--whatsapp);">WhatsApp</a>
+            <a class="soc-btn" href="https://www.instagram.com/aisezim_stylist?igsh=ZGZlengyYWJuMWxj" target="_blank" style="background:linear-gradient(45deg,#feda75,#d62976,#962fbf,#4f5bd5);color:#fff">Instagram</a>
+          </div>
+          <div style="margin-top:14px;font-size:13px;color:var(--muted)">
+            📍 Адрес: г. Ош, ул. Аманбая Жунусова 50, Кыргызстан
+          </div>
+          <div style="margin-top:12px;display:flex;gap:10px">
+            <a class="btn" href="#comments" style="flex:1">Отзывы</a>
+            <a class="btn" href="https://wa.me/996706341372" target="_blank" style="flex:1">Записаться</a>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <section class="comments" id="comments">
+      <h3 style="color:var(--neon-pink)">Отзывы клиентов</h3>
+      <div class="comment-form">
+        <input id="cname" type="text" placeholder="Ваше имя"/>
+        <select id="crating"><option value="5">★★★★★ 5</option><option value="4">★★★★ 4</option><option value="3">★★★ 3</option><option value="2">★★ 2</option><option value="1">★ 1</option></select>
+        <textarea id="cmessage" rows="4" placeholder="Ваш отзыв"></textarea>
+        <div style="display:flex;gap:8px">
+          <button id="submitComment" class="btn" style="background:linear-gradient(90deg,var(--neon-pink),#ff66d9);color:#100">Оставить отзыв</button>
+          <button id="clearComments" class="btn" style="background:transparent;border:1px dashed rgba(255,255,255,0.04)">Очистить</button>
+        </div>
+      </div>
+      <div class="comment-list" id="commentList"></div>
+    </section>
+
+    <footer>
+      © <span id="year"></span> Aisezim Stelist — Сделано с неоновым сердцем. <br>
+      Instagram: <a href="https://www.instagram.com/aisezim_stylist?igsh=ZGZlengyYWJuMWxj" target="_blank" style="color:var(--neon-pink);text-decoration:none">@aisezim_stylist</a>
+    </footer>
+  </div>
+
+  <script async src="//www.instagram.com/embed.js"></script>
+  <script>
+    const forbiddenWords = ["дурак","шлюха","дура","пизд","пизди","дерьмо","залупа","пенис","еблан","член","говно","хуево","отъеб","отьебался","отьебись","ебатся","сука","блять","хуй","нахуя","нахуй","лох","ебаный","ебать","ебал","соси","выебать","выебал","секс","порно","дрочить","даун","долбоеб","гондон","бля","шлюха","член","пидор","пидр","пизда"]; // список запрещённых слов
+    function censorText(text) {
+      let censored = text;
+      forbiddenWords.forEach(word => {
+        const regex = new RegExp(word, 'gi');
+        censored = censored.replace(regex, '*'.repeat(word.length));
+      });
+      censored = censored.replace(/[<>$%&*{}]/g, '*');
+      return censored;
+    }
+
+    const STORAGE_KEY = 'ase_comments_v1';
+    const listEl = document.getElementById('commentList');
+    const yearEl = document.getElementById('year');
+    yearEl.textContent = new Date().getFullYear();
+
+    function renderComments(){
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      listEl.innerHTML = '';
+      if(data.length===0){
+        listEl.innerHTML = '<div style="color:var(--muted)">Пока нет отзывов — станьте первым!</div>';
+        return;
+      }
+      data.slice().reverse().forEach(c=>{
+        const div = document.createElement('div');
+        div.className = 'comment';
+        div.innerHTML = `<div class="meta"><strong>${escapeHtml(c.name)}</strong> • ${c.rating} ★ • <span>${new Date(c.t).toLocaleString('ru-RU')}</span></div><div>${escapeHtml(c.msg)}</div>`;
+        listEl.appendChild(div);
+      });
+    }
+
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]))}
+
+    document.getElementById('submitComment').addEventListener('click', ()=>{
+      let name = document.getElementById('cname').value.trim()||'Гость';
+      let rating = document.getElementById('crating').value;
+      let msg = document.getElementById('cmessage').value.trim();
+      if(msg.length<3){alert('Пожалуйста, оставьте отзыв не короче 3 символов.');return}
+
+      name = censorText(name);
+      msg = censorText(msg);
+
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      data.push({name, rating, msg, t: Date.now()});
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      document.getElementById('cmessage').value='';
+      renderComments();
+    });
+
+    document.getElementById('clearComments').addEventListener('click', ()=>{
+      if(confirm('Удалить все отзывы?')){
+        localStorage.removeItem(STORAGE_KEY);
+        renderComments();
+      }
+    });
+
+    renderComments();
+  </script>
+</body>
+</html>
