@@ -179,21 +179,28 @@
 
   <!-- Firebase -->
   <script type="module">
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
-  import { getFirestore, collection, addDoc, getDocs, query, orderBy, deleteDoc, doc, serverTimestamp }
-  from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+  // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
-    const firebaseConfig = {
-      apiKey: "AIzaSyCxbPEYPp2bpdn_UNqVe1PkfIB1rYnzHeE",
-      authDomain: "aisezimotziv-dee68.firebaseapp.com",
-      projectId: "aisezimotziv-dee68",
-      storageBucket: "aisezimotziv-dee68.appspot.com",
-      messagingSenderId: "348332654941",
-      appId: "1:348332654941:web:af71f58d24036d440aa8b4",
-      measurementId: "G-K1WQZH9QQP"
-    };
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCxbPEYPp2bpdn_UNqVe1PkfIB1rYnzHeE",
+  authDomain: "aisezimotziv-dee68.firebaseapp.com",
+  databaseURL: "https://aisezimotziv-dee68-default-rtdb.europe-west1.firebasedatabase.app",
+  projectId: "aisezimotziv-dee68",
+  storageBucket: "aisezimotziv-dee68.firebasestorage.app",
+  messagingSenderId: "348332654941",
+  appId: "1:348332654941:web:af71f58d24036d440aa8b4",
+  measurementId: "G-K1WQZH9QQP"
+};
 
-    const app = initializeApp(firebaseConfig);
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
     const db = getFirestore(app);
     const commentsCol = collection(db, "comments");
 
