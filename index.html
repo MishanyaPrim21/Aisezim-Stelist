@@ -106,6 +106,12 @@ footer{margin-top:34px;padding:20px;text-align:center;color:var(--muted);font-si
         <div class="gallery">
           <img src="v111.jpg" alt="Прическа 1 — Aisezim"/>
           <img src="v222.jpg" alt="Прическа 2 — Aisezim"/>
+          <img src="v333.jpg" alt="Прическа 3 — Aisezim"/>
+          <img src="v444.jpg" alt="Прическа 4 — Aisezim"/>
+          <img src="v555.jpg" alt="Прическа 5 — Aisezim"/>
+          <img src="v666.jpg" alt="Прическа 6 — Aisezim"/>
+          <img src="v777.jpg" alt="Прическа 7 — Aisezim"/>
+          <img src="v888.jpg" alt="Прическа 8 — Aisezim"/>
         </div>
 
         <section class="price-list" id="price">
@@ -173,6 +179,28 @@ footer{margin-top:34px;padding:20px;text-align:center;color:var(--muted);font-si
 
   <script async src="//www.instagram.com/embed.js"></script>
   <script>
+    // Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
+
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyDxFmYyBOlXwsoK-YrmhMebPcWwYQumeMc",
+  authDomain: "eise2-75fce.firebaseapp.com",
+  databaseURL: "https://eise2-75fce-default-rtdb.firebaseio.com",
+  projectId: "eise2-75fce",
+  storageBucket: "eise2-75fce.firebasestorage.app",
+  messagingSenderId: "168667629609",
+  appId: "1:168667629609:web:03101be184664c5e0c3438",
+  measurementId: "G-BEBPNRX7SV"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
     const forbiddenWords = ["лесби","лесбиянка","инцест","порнуха","сперма","дроч","залупня","дерьмо","выбляд","выбляди","выблядок","еботня","отьебалась","ебатория","ебаная","понос","дрисня","пизди","ебал","выебал","ебатся","ебать","отъеб","отьеб","отьебался","отьебись","охуенно","хуйня","дура","говно","член","пенис","залупа","сука","блять","хуй","нахуя","нахуй","лох","ебаный","ебать","ебал","соси","выебать","выебал","секс","порно","дрочить","даун","долбоеб","гондон","бля","шлюха","член","пидор","пидр","пизда"]; // список запрещённых слов
     function censorText(text) {
       let censored = text;
