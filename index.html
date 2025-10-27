@@ -1,4 +1,4 @@
-<!doctype html>  
+вот он  <!doctype html>  
 <html lang="ru">
 <head>
   <meta charset="utf-8">
@@ -57,22 +57,23 @@
     .comment{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.03)}
     .meta{font-size:12px;color:var(--muted);margin-bottom:6px}
 
-    .gallery img {
-      width: 100%;
-      height: auto;
-      border-radius: 14px; 
-      border: 2px solid var(--neon-pink); 
-      box-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255,45,247,0.4); 
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .gallery img:hover {
-      transform: scale(1.03);
-      box-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,45,247,0.6);
-    }
+.gallery img {
+  width: 100%;
+  height: auto;
+  border-radius: 14px; 
+  border: 2px solid var(--neon-pink); 
+  box-shadow: 0 0 20px var(--neon-pink), 0 0 40px rgba(255,45,247,0.4); 
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
-    footer{margin-top:34px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+.gallery img:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px var(--neon-pink), 0 0 60px rgba(255,45,247,0.6);
+}
 
-    @media (max-width:900px){.hero{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
+footer{margin-top:34px;padding:20px;text-align:center;color:var(--muted);font-size:13px}
+
+@media (max-width:900px){.hero{grid-template-columns:1fr}.gallery{grid-template-columns:1fr}}
   </style>
 </head>
 <body>
@@ -122,6 +123,7 @@
           <div class="price-item"><span>Осветление маслом</span><span>5000 сом</span></div>
           <div class="price-item"><span>Стрижки (чёлка)</span><span>700–250 сом</span></div>
         </section>
+
       </section>
 
       <aside class="contact">
@@ -153,13 +155,7 @@
       <h3 style="color:var(--neon-pink)">Отзывы клиентов</h3>
       <div class="comment-form">
         <input id="cname" type="text" placeholder="Ваше имя"/>
-        <select id="crating">
-          <option value="5">★★★★★ 5</option>
-          <option value="4">★★★★ 4</option>
-          <option value="3">★★★ 3</option>
-          <option value="2">★★ 2</option>
-          <option value="1">★ 1</option>
-        </select>
+        <select id="crating"><option value="5">★★★★★ 5</option><option value="4">★★★★ 4</option><option value="3">★★★ 3</option><option value="2">★★ 2</option><option value="1">★ 1</option></select>
         <textarea id="cmessage" rows="4" placeholder="Ваш отзыв"></textarea>
         <div style="display:flex;gap:8px">
           <button id="submitComment" class="btn" style="background:linear-gradient(90deg,var(--neon-pink),#ff66d9);color:#100">Оставить отзыв</button>
@@ -176,35 +172,8 @@
   </div>
 
   <script async src="//www.instagram.com/embed.js"></script>
-
-  <!-- Firebase -->
- <script type="module">
- // Import the functions you need from the SDKs you need
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
-
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
-const firebaseConfig = {
-  apiKey: "AIzaSyDxFmYyBOlXwsoK-YrmhMebPcWwYQumeMc",
-  authDomain: "eise2-75fce.firebaseapp.com",
-  projectId: "eise2-75fce",
-  storageBucket: "eise2-75fce.firebasestorage.app",
-  messagingSenderId: "168667629609",
-  appId: "1:168667629609:web:03101be184664c5e0c3438",
-  measurementId: "G-BEBPNRX7SV"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
-    const db = getFirestore(app);
-    const commentsCol = collection(db, "comments");
-
-    const forbiddenWords = ["лесби","лесбиянка","инцест","порнуха","сперма","дроч","залупня","дерьмо","выбляд","выбляди","выблядок","еботня","отьебалась","ебатория","ебаная","понос","дрисня","пизди","ебал","выебал","ебатся","ебать","отъеб","отьеб","отьебался","отьебись","охуенно","хуйня","дура","говно","член","пенис","залупа","сука","блять","хуй","нахуя","нахуй","лох","ебаный","ебать","ебал","соси","выебать","выебал","секс","порно","дрочить","даун","долбоеб","гондон","бля","шлюха","член","пидор","пидр","пизда"];
-
+  <script>
+    const forbiddenWords = ["лесби","лесбиянка","инцест","порнуха","сперма","дроч","залупня","дерьмо","выбляд","выбляди","выблядок","еботня","отьебалась","ебатория","ебаная","понос","дрисня","пизди","ебал","выебал","ебатся","ебать","отъеб","отьеб","отьебался","отьебись","охуенно","хуйня","дура","говно","член","пенис","залупа","сука","блять","хуй","нахуя","нахуй","лох","ебаный","ебать","ебал","соси","выебать","выебал","секс","порно","дрочить","даун","долбоеб","гондон","бля","шлюха","член","пидор","пидр","пизда"]; // список запрещённых слов
     function censorText(text) {
       let censored = text;
       forbiddenWords.forEach(word => {
@@ -215,51 +184,47 @@ const analytics = getAnalytics(app);
       return censored;
     }
 
+    const STORAGE_KEY = 'ase_comments_v1';
     const listEl = document.getElementById('commentList');
     const yearEl = document.getElementById('year');
     yearEl.textContent = new Date().getFullYear();
 
-    async function renderComments() {
-      const q = query(commentsCol, orderBy("t", "desc"));
-      const snapshot = await getDocs(q);
+    function renderComments(){
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
       listEl.innerHTML = '';
-
-      if (snapshot.empty) {
+      if(data.length===0){
         listEl.innerHTML = '<div style="color:var(--muted)">Пока нет отзывов — станьте первым!</div>';
         return;
       }
-
-      snapshot.docs.forEach(docSnap => {
-        const c = docSnap.data();
+      data.slice().reverse().forEach(c=>{
         const div = document.createElement('div');
         div.className = 'comment';
-        div.innerHTML = `<div class="meta"><strong>${escapeHtml(c.name)}</strong> • ${c.rating} ★ • <span>${new Date(c.t.seconds*1000).toLocaleString('ru-RU')}</span></div><div>${escapeHtml(c.msg)}</div>`;
+        div.innerHTML = `<div class="meta"><strong>${escapeHtml(c.name)}</strong> • ${c.rating} ★ • <span>${new Date(c.t).toLocaleString('ru-RU')}</span></div><div>${escapeHtml(c.msg)}</div>`;
         listEl.appendChild(div);
       });
     }
 
-    function escapeHtml(s) {
-      return String(s).replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]));
-    }
+    function escapeHtml(s){return String(s).replace(/[&<>"']/g, m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;"}[m]))}
 
-    document.getElementById('submitComment').addEventListener('click', async () => {
-  let name = document.getElementById('cname').value.trim() || 'Гость';
-  let rating = document.getElementById('crating').value;
-  let msg = document.getElementById('cmessage').value.trim();
-  if (msg.length < 3) { alert('Пожалуйста, оставьте отзыв не короче 3 символов.'); return; }
+    document.getElementById('submitComment').addEventListener('click', ()=>{
+      let name = document.getElementById('cname').value.trim()||'Гость';
+      let rating = document.getElementById('crating').value;
+      let msg = document.getElementById('cmessage').value.trim();
+      if(msg.length<3){alert('Пожалуйста, оставьте отзыв не короче 3 символов.');return}
 
-  name = censorText(name);
-  msg = censorText(msg);
+      name = censorText(name);
+      msg = censorText(msg);
 
-  await addDoc(commentsCol, { name, rating, msg, t: serverTimestamp() });
-  document.getElementById('cmessage').value = '';
-  renderComments();
-});
+      const data = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
+      data.push({name, rating, msg, t: Date.now()});
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      document.getElementById('cmessage').value='';
+      renderComments();
+    });
 
-    document.getElementById('clearComments').addEventListener('click', async () => {
-      if (confirm('Удалить все отзывы?')) {
-        const snapshot = await getDocs(commentsCol);
-        snapshot.docs.forEach(d => deleteDoc(doc(db, "comments", d.id)));
+    document.getElementById('clearComments').addEventListener('click', ()=>{
+      if(confirm('Удалить все отзывы?')){
+        localStorage.removeItem(STORAGE_KEY);
         renderComments();
       }
     });
